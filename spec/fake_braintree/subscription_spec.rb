@@ -138,7 +138,7 @@ describe 'Braintree::Subscription.find' do
 
   it 'returns discounts added with the subscription' do
     discount_id = 'abc123'
-    amount = BigDecimal.new('15.00')
+    amount = BigDecimal('15.00')
     subscription_id = create_subscription(discounts: { add: [{ inherited_from_id: discount_id, amount: amount }]}).subscription.id
     subscription = Braintree::Subscription.find(subscription_id)
     discounts = subscription.discounts

@@ -10,6 +10,10 @@ class FakeBraintree::Server
 
   def initialize(options = {})
     app = FakeBraintree::SinatraApp
-    @server = Capybara::Server.new(app, options.fetch(:port, nil), SERVER_HOST)
+    server_options = {
+      port: options.fetch(:port, nil),
+      host: SERVER_HOST,
+    }
+    @server = Capybara::Server.new(app, server_options)
   end
 end
